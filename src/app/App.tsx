@@ -1,8 +1,13 @@
 import React from "react";
-import "./App.css";
+import Button from "../components/button/Button";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <Button></Button>
+    </div>
+  );
 }
 
 export default App;
