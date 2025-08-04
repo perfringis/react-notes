@@ -1,25 +1,26 @@
-import { useState } from "react";
 import Square from "../square/Square";
 import "./board.css";
 
-export default function Board() {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
+type Props = {
+  xIsNext: boolean;
+  squares: Array<string>;
+  onPlay: (arr: Array<string>) => void;
+};
+
+export default function Board({ xIsNext, squares, onPlay }: Props) {
 
   function handleClick(i: number) {
-    if (squares[i] || calculateWinner(squares)) {
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
 
     const nextSquares = squares.slice();
-
     if (xIsNext) {
       nextSquares[i] = "X";
     } else {
       nextSquares[i] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares);
   }
 
   const winner = calculateWinner(squares);
