@@ -1,3 +1,6 @@
+// react using JSX markup language to write components
+// jsx is similar to HTML but is not the same
+
 import React from "react";
 import "./App.css";
 
